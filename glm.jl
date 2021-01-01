@@ -35,5 +35,9 @@ aws = DataFrame(users = users, cogs = cogs)
 
 model = lm(@formula(cogs ~ users), aws)
 
-r2(model)
-adjr2(model)
+print(model)
+
+coefficient_of_determination = r2(model)
+adjusted_r2 = adjr2(model) # This isn't necessary for this model
+y_intercept = coef(model)[1]
+slope = coef(model)[2]
