@@ -3,8 +3,6 @@
 using Pkg, CSV, DataFrames
 using StatsBase, StatsPlots, Gadfly, Plots
 
-file = CSV.read("train.csv", DataFrame)
-
 df = DataFrame(CSV.read("train.csv", DataFrame))
 
 summary(df)
@@ -16,7 +14,6 @@ countmap(df[!, :Survived])
 
 #Gender distribution of passengers
 countmap(df[!, :Sex])
-
 
 #Distributution by ticket class
 countmap(df[!, :Pclass])
