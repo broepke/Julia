@@ -1,4 +1,4 @@
-using Pkg, CSV, DataFrames
+using Pkg, CSV, DataFrames, DataFramesMeta
 using StatsBase, StatsPlots, Gadfly, Plots
 using Dates, TimeZones
 using CategoricalArrays
@@ -20,3 +20,15 @@ df.Topic = CategoricalArray(df.Topic)
 # Remove Duplicate Rows and Drop any Missing
 df = unique!(df)
 df = dropmissing!(df)
+
+
+foo = @linq df |>
+  transform(Text_Len = length(:Discussion)) |>
+  transform()
+
+a = "The quick brown fox jumped over"
+
+foo.Text_Len = length(foo.Discussion)
+
+df2 = DataFrame(str=["one", "two", "three", "four", "five", "six"])
+df2[map(str->length(str)<=3, df2[!, :str]),:]
