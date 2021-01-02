@@ -7,11 +7,6 @@ using TextAnalysis
 # Import the data into a DataFrame
 df = DataFrame(CSV.read("tesla_forums.csv", DataFrame))
 
-# Basic Inspecition
-summary(df)
-describe(df)
-print(first(df, 5))
-
 # Convert Columns into preferred formats
 df.Time = ZonedDateTime.(df.Time, dateformat"yyyy-mm-dd\THH:MM:SSz")
 df.User = CategoricalArray(df.User)
@@ -21,14 +16,25 @@ df.Topic = CategoricalArray(df.Topic)
 df = unique!(df)
 df = dropmissing!(df)
 
+# Basic Inspecition
+size(df)
+names(df)
+summary(df)
+describe(df)
+first(df, 5)
 
-foo = @linq df |>
-  transform(Text_Len = length(:Discussion)) |>
-  transform()
+#foo = @linq df |>
+#  transform(Text_Len = length(:Discussion))
 
-a = "The quick brown fox jumped over"
+df[!, :Text_Len] .= length(df[!, :Discussion])
 
-foo.Text_Len = length(foo.Discussion)
+
 
 df2 = DataFrame(str=["one", "two", "three", "four", "five", "six"])
 df2[map(str->length(str)<=3, df2[!, :str]),:]
+
+p1 = Gadfly.plot(
+    df,
+    y = :User,
+    Geom.histogram(),
+)
