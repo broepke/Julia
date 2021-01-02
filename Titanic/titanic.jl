@@ -3,7 +3,7 @@
 using Pkg, CSV, DataFrames
 using StatsBase, StatsPlots, Gadfly, Plots
 
-df = DataFrame(CSV.read("train.csv", DataFrame))
+df = DataFrame(CSV.read("./Titanic/train.csv", DataFrame))
 
 summary(df)
 describe(df)

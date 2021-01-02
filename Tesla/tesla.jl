@@ -5,7 +5,7 @@ using CategoricalArrays
 using TextAnalysis
 
 # Import the data into a DataFrame
-df = DataFrame(CSV.read("tesla_forums.csv", DataFrame))
+df = DataFrame(CSV.read("./Tesla/tesla_forums.csv", DataFrame))
 
 # Convert Columns into preferred formats
 df.Time = ZonedDateTime.(df.Time, dateformat"yyyy-mm-dd\THH:MM:SSz")
