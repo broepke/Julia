@@ -20,3 +20,5 @@ Setup.  Clone the `project.toml` file and run the command `instantiate`
 3. Enter the command `activate .` to activate the environment for the project (based on the `project.toml` file).
 4. You can precompile by running `update; precompile`.
 5. If it's a fresh computer, project, run `instantiate`.
+
+See [Working with Environments](https://julialang.github.io/Pkg.jl/v1.1/environments/#Creating-your-own-projects-1)
